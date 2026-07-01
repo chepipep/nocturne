@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="kombai-design-canvas" content="true">
+  <base href="http://localhost:19901/">
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOCTURNE — Eau de Parfum No. 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" onerror="__crawlAsset&&__crawlAsset(this)">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin onerror="__crawlAsset&&__crawlAsset(this)">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <style>html, body { margin: 0; padding: 0; } #root { display: contents; }</style>
+</head><body>
+  <div id="root"><style>
+    :root {
+      --ink: #0E0B0C;
+      --bone: #F4EFE6;
+      --muted: #8A7F77;
+      --oxblood: #6E1423;
+      --gold: #C9A227;
+      --wine: #1C1518;
+      --blood: #B0263C;
+      --e-curtain: cubic-bezier(.86, 0, .07, 1);
+      --e-settle: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--bone);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      line-height: 1.62;
+      letter-spacing: -.006em;
+      overflow-x: hidden;
+    }
+
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      pointer-events: none;
+      background-image: url(https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/bb331165ec2248149d5524f6f08b3088.jpg);
+      mix-blend-mode: overlay;
+      opacity: .32
+    }
+
+    .eyebrow {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      color: var(--muted)
+    }
+
+    .display {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: .94
+    }
+
+    .btn {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .78rem;
+      text-decoration: none;
+      display: inline-block;
+      padding: .95rem 1.7rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      transition: background .4s var(--e-settle), color .4s var(--e-settle)
+    }
+
+    .btn:hover {
+      background: var(--gold);
+      color: var(--ink)
+    }
+
+    .btn--solid {
+      background: var(--oxblood);
+      border-color: var(--oxblood);
+      color: var(--bone)
+    }
+
+    .btn--solid:hover {
+      background: var(--blood);
+      border-color: var(--blood);
+      color: var(--bone)
+    }
+
+    a {
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px
+    }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 150;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.4rem;
+      mix-blend-mode: difference;
+      color: #fff
+    }
+
+    nav .wm {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: .04em
+    }
+
+    nav .links {
+      display: flex;
+      gap: 1.8rem;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .7rem
+    }
+
+    nav .links a {
+      text-decoration: none;
+      opacity: .85;
+      transition: opacity .3s
+    }
+
+    nav .links a:hover {
+      opacity: 1
+    }
+
+    /* ---------- MOBILE NAV BURGER ---------- */
+    .nav__burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 160
+    }
+
+    .nav__burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transition: transform .4s var(--e-settle), opacity .3s
+    }
+
+    nav.open .nav__burger span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg)
+    }
+
+    nav.open .nav__burger span:nth-child(2) {
+      opacity: 0
+    }
+
+    nav.open .nav__burger span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg)
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--ink)
+    }
+
+    .hero__half {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      will-change: transform, clip-path
+    }
+
+    .hero__half img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .hero__left {
+      left: 0;
+      background: linear-gradient(135deg, var(--wine), var(--ink));
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 1.2s var(--e-curtain)
+    }
+
+    .hero__left::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: rgba(14, 11, 12, .25);
+      pointer-events: none
+    }
+
+    .hero__right {
+      right: 0;
+      background: linear-gradient(135deg, #efe7d6, var(--bone));
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1.2s var(--e-curtain) .08s
+    }
+
+    .hero__right::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: rgba(244, 239, 230, .15);
+      pointer-events: none
+    }
+
+    .is-loaded .hero__left,
+    .is-loaded .hero__right {
+      clip-path: inset(0 0 0 0)
+    }
+
+    .hero__seam {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--gold);
+      z-index: 6;
+      box-shadow: 0 0 28px rgba(201, 162, 39, .6);
+      will-change: width
+    }
+
+    .hero__seam span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+      white-space: nowrap;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      letter-spacing: .4em;
+      font-size: .62rem;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity .5s
+    }
+
+    .hero__content {
+      position: absolute;
+      inset: 0;
+      z-index: 8;
+      pointer-events: none
+    }
+
+    .hero__eyebrow {
+      position: absolute;
+      top: 13vh;
+      left: 6vw
+    }
+
+    .hero__eyebrow .eyebrow {
+      color: var(--bone);
+      opacity: .0;
+      transform: translateY(8px);
+      transition: opacity .8s .9s, transform .8s .9s var(--e-settle)
+    }
+
+    .is-loaded .hero__eyebrow .eyebrow {
+      opacity: .9;
+      transform: none
+    }
+
+    .hero__title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      font-size: clamp(3rem, 15vw, 13rem);
+      display: flex;
+      line-height: .9
+    }
+
+    .hero__title .ch {
+      display: inline-block;
+      opacity: 0;
+      letter-spacing: .4em;
+      transform: translateY(.1em);
+      transition: opacity .7s var(--e-settle), letter-spacing .9s var(--e-curtain), transform .7s var(--e-settle);
+      transition-delay: calc(var(--i)*45ms + .5s)
+    }
+
+    .hero__title .ch.l {
+      color: var(--bone)
+    }
+
+    .hero__title .ch.r {
+      color: var(--ink)
+    }
+
+    .is-loaded .hero__title .ch {
+      opacity: 1;
+      letter-spacing: -.02em;
+      transform: none
+    }
+
+    .hero__lower {
+      position: absolute;
+      right: 6vw;
+      bottom: 12vh;
+      max-width: 30ch;
+      text-align: right;
+      pointer-events: auto;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .9s 1.3s, transform .9s 1.3s var(--e-settle)
+    }
+
+    .is-loaded .hero__lower {
+      opacity: 1;
+      transform: none
+    }
+
+    .hero__lower .sub {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+      color: var(--ink);
+      margin-bottom: 1.4rem
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+      flex-wrap: wrap
+    }
+
+    /* ---------- §1 PYRAMID (pinned split swap) ---------- */
+    .pyramid {
+      position: relative;
+      height: 300vh;
+      background: var(--wine)
+    }
+
+    .pyramid__pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr
+    }
+
+    .pyramid__visual {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 60%, rgba(110, 20, 35, .55), var(--wine) 70%)
+    }
+
+    .pyramid__visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .92
+    }
+
+    .pyramid__glow {
+      position: absolute;
+      left: 50%;
+      top: 58%;
+      transform: translate(-50%, -50%);
+      width: 40vmin;
+      height: 40vmin;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, rgba(201, 162, 39, .55), transparent 65%);
+      filter: blur(8px);
+      will-change: transform, opacity
+    }
+
+    .pyramid__right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 7vw;
+      background: var(--ink)
+    }
+
+    .pyramid__head {
+      position: absolute;
+      top: 9vh;
+      left: 7vw;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      letter-spacing: -.02em;
+      overflow: hidden
+    }
+
+    .pyramid__head span {
+      display: inline-block;
+      clip-path: inset(0 100% 0 0);
+      transition: clip-path 1s var(--e-curtain)
+    }
+
+    .pyramid__head.in span {
+      clip-path: inset(0 0 0 0)
+    }
+
+    .panel {
+      position: absolute;
+      left: 7vw;
+      right: 7vw;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s var(--e-settle), transform .6s var(--e-settle);
+      pointer-events: none
+    }
+
+    .panel.active {
+      opacity: 1;
+      transform: none
+    }
+
+    .panel .idx {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      letter-spacing: .22em;
+      font-size: 1rem;
+      color: var(--oxblood);
+      display: block;
+      margin-bottom: .8rem
+    }
+
+    .panel .stage {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      font-size: .8rem;
+      color: var(--muted)
+    }
+
+    .panel .rule {
+      height: 2px;
+      background: var(--gold);
+      margin: 1.4rem 0;
+      transform-origin: left;
+      transform: scaleX(.15);
+      transition: transform .8s var(--e-settle)
+    }
+
+    .panel.active .rule {
+      transform: scaleX(1)
+    }
+
+    .panel ul {
+      list-style: none
+    }
+
+    .panel li {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+      color: var(--bone);
+      line-height: 1.25
+    }
+
+    .panel li::before {
+      content: "—  ";
+      color: var(--gold);
+      font-style: normal
+    }
+
+    /* ---------- §2 REVEAL (spotlight mask) ---------- */
+    .reveal {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: #0a0809;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: none
+    }
+
+    .reveal__stage {
+      position: absolute;
+      inset: 0;
+      will-change: transform
+    }
+
+    .reveal__layer {
+      position: absolute;
+      inset: 0
+    }
+
+    .reveal__layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .reveal__base {
+      filter: grayscale(1) brightness(.45) contrast(1.1)
+    }
+
+    .reveal__base {
+      background: linear-gradient(135deg, #171012, #0a0809)
+    }
+
+    .reveal__color {
+      background: linear-gradient(135deg, var(--oxblood), #3a0f17);
+      -webkit-mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #000 150px, transparent 270px);
+      mask-image: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), #000 150px, transparent 270px)
+    }
+
+    .reveal__word {
+      position: relative;
+      z-index: 4;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 15vw, 13rem);
+      letter-spacing: -.01em;
+      color: #fff;
+      mix-blend-mode: difference;
+      filter: blur(18px);
+      opacity: 0;
+      transition: filter 1s var(--e-settle), opacity 1s
+    }
+
+    .reveal.in .reveal__word {
+      filter: blur(0);
+      opacity: 1
+    }
+
+    .reveal__cap {
+      position: fixed;
+      z-index: 6;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .66rem;
+      color: var(--gold);
+      pointer-events: none;
+      transform: translate(14px, 14px);
+      left: var(--mx, 50%);
+      top: var(--my, 50%);
+      opacity: 0;
+      transition: opacity .4s
+    }
+
+    .reveal:hover .reveal__cap {
+      opacity: .9
+    }
+
+    /* ---------- §3 MAKER (corner quote + portrait) ---------- */
+    .maker {
+      position: relative;
+      min-height: 115vh;
+      background: var(--bone);
+      color: var(--ink);
+      overflow: hidden
+    }
+
+    .maker__portrait {
+      position: absolute;
+      left: -2vw;
+      bottom: -4vh;
+      width: 42vw;
+      max-width: 560px;
+      aspect-ratio: 4/5;
+      background: var(--oxblood);
+      overflow: hidden;
+      will-change: transform
+    }
+
+    .maker__portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .maker__diag {
+      position: absolute;
+      left: 18%;
+      bottom: 22%;
+      width: 64%;
+      height: 2px;
+      background: var(--oxblood);
+      transform-origin: left;
+      transform: rotate(-30deg) scaleX(0);
+      transition: transform 1.1s var(--e-curtain)
+    }
+
+    .maker.in .maker__diag {
+      transform: rotate(-30deg) scaleX(1)
+    }
+
+    .maker__quote {
+      position: absolute;
+      right: 5vw;
+      top: 11vh;
+      max-width: 24ch;
+      text-align: right
+    }
+
+    .maker__mark {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: clamp(6rem, 14vw, 12rem);
+      color: var(--gold);
+      line-height: .6;
+      display: block;
+      will-change: transform;
+      transform: translateX(.2em)
+    }
+
+    .maker__q {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 3.6vw, 3rem);
+      line-height: 1.18
+    }
+
+    .maker__q .w {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(.5em);
+      transition: opacity .6s var(--e-settle), transform .6s var(--e-settle);
+      transition-delay: calc(var(--i)*60ms)
+    }
+
+    .maker.in .maker__q .w {
+      opacity: 1;
+      transform: none
+    }
+
+    .maker__attr {
+      position: absolute;
+      right: 5vw;
+      bottom: 9vh;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .45em;
+      font-size: .78rem;
+      color: var(--oxblood);
+      opacity: 0;
+      transition: letter-spacing 1s var(--e-settle), opacity 1s
+    }
+
+    .maker.in .maker__attr {
+      opacity: 1;
+      letter-spacing: .22em
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      position: relative;
+      background: var(--ink);
+      overflow: hidden;
+      padding-top: 8vh
+    }
+
+    .foot__rail {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.4rem 4vh
+    }
+
+    .foot__col {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .7s var(--e-settle), transform .7s var(--e-settle);
+      transition-delay: calc(var(--i)*80ms)
+    }
+
+    footer.in .foot__col {
+      opacity: 1;
+      transform: none
+    }
+
+    .foot__col h4 {
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      color: var(--gold);
+      margin-bottom: 1.2rem
+    }
+
+    .foot__col a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: .95rem;
+      padding: .3rem 0;
+      transition: color .3s
+    }
+
+    .foot__col a:hover {
+      color: var(--bone)
+    }
+
+    .foot__news {
+      display: flex;
+      border-bottom: 1px solid var(--muted);
+      max-width: 280px
+    }
+
+    .foot__news input {
+      flex: 1;
+      background: none;
+      border: none;
+      color: var(--bone);
+      font-family: 'Inter';
+      padding: .5rem 0;
+      position: relative
+    }
+
+    .foot__news input:focus {
+      outline: none
+    }
+
+    .foot__news {
+      position: relative
+    }
+
+    .foot__news::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 1px;
+      width: 0;
+      background: var(--gold);
+      transition: width .5s var(--e-settle)
+    }
+
+    .foot__news:focus-within::after {
+      width: 100%
+    }
+
+    .foot__news button {
+      background: none;
+      border: none;
+      color: var(--gold);
+      cursor: pointer;
+      font-family: 'Archivo Narrow';
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .72rem
+    }
+
+    .foot__hr {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      max-width: 1200px;
+      margin: 2vh auto
+    }
+
+    .foot__wm {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      letter-spacing: -.03em;
+      font-size: clamp(4rem, 22vw, 20rem);
+      line-height: .8;
+      color: var(--surface, #171012);
+      text-align: center;
+      color: var(--wine);
+      margin-top: 2vh;
+      transform: translateY(40%) skewY(4deg);
+      opacity: 0;
+      transition: transform 1.1s var(--e-curtain), opacity 1.1s
+    }
+
+    footer.in .foot__wm {
+      transform: none;
+      opacity: 1
+    }
+
+    .foot__fine {
+      text-align: center;
+      font-family: 'Archivo Narrow', sans-serif;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      font-size: .66rem;
+      color: var(--muted);
+      padding: 1rem 0 3rem
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media(max-width:768px) {
+
+      /* NAV — burger + full-screen overlay menu */
+      nav {
+        padding: 1.1rem 1.3rem;
+        mix-blend-mode: normal;
+        color: var(--bone)
+      }
+
+      .nav__burger {
+        display: flex
+      }
+
+      nav .links {
+        position: fixed;
+        inset: 0;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.4rem;
+        background: rgba(14, 11, 12, .97);
+        backdrop-filter: blur(6px);
+        font-size: 1.05rem;
+        letter-spacing: .28em;
+        z-index: 155;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-16px);
+        transition: opacity .45s var(--e-settle), transform .45s var(--e-curtain), visibility .45s
+      }
+
+      nav .links a {
+        opacity: 1;
+        padding: .4rem 0
+      }
+
+      nav.open .links {
+        opacity: 1;
+        visibility: visible;
+        transform: none
+      }
+
+      /* HERO — legible lower block, stacked CTAs, bottom scrim */
+      .hero__title {
+        font-size: clamp(2rem, 13vw, 5rem)
+      }
+
+      .hero__content::before {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 42%;
+        background: linear-gradient(to top, rgba(14, 11, 12, .92) 30%, transparent);
+        pointer-events: none
+      }
+
+      .hero__eyebrow {
+        left: 1.3rem
+      }
+
+      .hero__lower {
+        left: 1.3rem;
+        right: 1.3rem;
+        bottom: 7vh;
+        max-width: none;
+        text-align: left
+      }
+
+      .hero__lower .sub {
+        color: var(--bone)
+      }
+
+      .hero__cta {
+        justify-content: flex-start;
+        gap: .8rem
+      }
+
+      .hero__cta .btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: .95rem 1rem
+      }
+
+      /* PYRAMID — image on top, header + panels stacked below */
+      .pyramid {
+        height: 260vh
+      }
+
+      .pyramid__pin {
+        grid-template-columns: 1fr;
+        grid-template-rows: 34vh 1fr
+      }
+
+      .pyramid__right {
+        display: block;
+        padding: 2.4rem 1.3rem
+      }
+
+      .pyramid__head {
+        position: static;
+        margin-bottom: 1.6rem;
+        font-size: clamp(1.4rem, 7vw, 2rem)
+      }
+
+      .panel {
+        top: 6.5rem;
+        left: 1.3rem;
+        right: 1.3rem
+      }
+
+      .panel li {
+        font-size: clamp(1.5rem, 6.5vw, 2.2rem)
+      }
+
+      /* REVEAL — no custom cursor on touch */
+      .reveal {
+        cursor: auto
+      }
+
+      /* MAKER — stack into readable flow, no overlap */
+      .maker {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        padding: 14vh 1.3rem 8vh
+      }
+
+      .maker__diag {
+        display: none
+      }
+
+      .maker__quote {
+        position: static;
+        order: 1;
+        max-width: none;
+        text-align: left
+      }
+
+      .maker__mark {
+        transform: none;
+        font-size: clamp(4rem, 20vw, 7rem)
+      }
+
+      .maker__portrait {
+        position: static;
+        order: 2;
+        width: min(72vw, 320px);
+        margin: 2.6rem 0 0;
+        opacity: 1
+      }
+
+      .maker__attr {
+        position: static;
+        order: 3;
+        margin-top: 2.4rem;
+        text-align: left
+      }
+
+      /* FOOTER */
+      .foot__rail {
+        grid-template-columns: 1fr;
+        gap: 2.4rem
+      }
+    }
+
+    /* ---------- SMALL PHONES ---------- */
+    @media(max-width:400px) {
+      nav {
+        padding: 1rem 1.1rem
+      }
+
+      body {
+        font-size: 16px
+      }
+
+      .hero__cta {
+        flex-direction: column
+      }
+
+      .hero__cta .btn {
+        width: 100%
+      }
+
+      .pyramid__pin {
+        grid-template-rows: 28vh 1fr
+      }
+    }
+
+    /* ---------- REDUCED MOTION ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      * {
+        transition-duration: .001ms !important
+      }
+    }
+  </style>
+<link     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,900;1,9..144,300;1,9..144,900&family=Archivo+Narrow:wght@500;600&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet" onerror="__crawlAsset&&__crawlAsset(this)">
+
+  <div class="grain" aria-hidden="true" data-kid="0"></div>
+
+  <nav data-kid="1">
+    <span class="wm" data-kid="2">NOCTURNE</span>
+    <div class="links" id="nav-links" data-kid="3">
+      <a href="#pyramid" data-kid="4">The Notes</a>
+      <a href="#reveal" data-kid="5">The Reveal</a>
+      <a href="#maker" data-kid="6">The Maker</a>
+      <a href="#footer" data-kid="7">Acquire</a>
+    </div>
+    <button class="nav__burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  
+  <header class="hero" id="hero" data-kid="8">
+    <div class="hero__half hero__left" data-kid="9">
+      <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/252d8d28d135409fa2338962bf6f798e.png" alt="Nocturne flacon in shadow, ink-black still life" data-kid="10" onerror="__crawlAsset&&__crawlAsset(this)">
+    </div>
+    <div class="hero__half hero__right" data-kid="11">
+      <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/16b8bba6799745f9b2edfbe0f6a9f72b.png" alt="Nocturne flacon in warm light, bone-paper still life" data-kid="12" onerror="__crawlAsset&&__crawlAsset(this)">
+    </div>
+    <div class="hero__seam" data-kid="13"><span data-kid="14">NOCTURNE · MMXXVI</span></div>
+    <div class="hero__content" data-kid="15">
+      <div class="hero__eyebrow" data-kid="16"><span class="eyebrow" data-kid="17">Eau de Parfum · No. 1</span></div>
+      <h1 class="hero__title" aria-label="NOCTURNE" data-kid="18"></h1>
+      <div class="hero__lower" data-kid="19">
+        <p class="sub" data-kid="20">A scent that arrives after dark.</p>
+        <div class="hero__cta" data-kid="21">
+          <a href="#pyramid" class="btn btn--solid" data-kid="22">Discover the No. 1</a>
+          <a href="#pyramid" class="btn" data-kid="23">The Notes ↓</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+  <section class="pyramid" id="pyramid" data-kid="24">
+    <div class="pyramid__pin" data-kid="25">
+      <div class="pyramid__visual" data-kid="26">
+        <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/9c6a88faf90b40719c37b9365c363015.png" alt="Macro of the Nocturne flacon on a wine plinth" loading="lazy" data-kid="27" onerror="__crawlAsset&&__crawlAsset(this)">
+        <div class="pyramid__glow" data-kid="28"></div>
+      </div>
+      <div class="pyramid__right" data-kid="29">
+        <h2 class="pyramid__head" data-kid="30"><span data-kid="31">THE PYRAMID</span></h2>
+        <div class="panel" data-panel="0" data-kid="32">
+          <span class="idx" data-kid="33">01</span><span class="stage" data-kid="34">Top · first minutes</span>
+          <div class="rule" data-kid="35"></div>
+          <ul data-kid="36">
+            <li data-kid="37">Bergamot</li>
+            <li data-kid="38">Pink pepper</li>
+            <li data-kid="39">Cold steel</li>
+          </ul>
+        </div>
+        <div class="panel" data-panel="1" data-kid="40">
+          <span class="idx" data-kid="41">02</span><span class="stage" data-kid="42">Heart · the hour it blooms</span>
+          <div class="rule" data-kid="43"></div>
+          <ul data-kid="44">
+            <li data-kid="45">Oxblood rose</li>
+            <li data-kid="46">Saffron</li>
+            <li data-kid="47">Leather</li>
+          </ul>
+        </div>
+        <div class="panel" data-panel="2" data-kid="48">
+          <span class="idx" data-kid="49">03</span><span class="stage" data-kid="50">Base · what remains by morning</span>
+          <div class="rule" data-kid="51"></div>
+          <ul data-kid="52">
+            <li data-kid="53">Ambergris</li>
+            <li data-kid="54">Vetiver</li>
+            <li data-kid="55">Smoked oud</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="reveal" id="reveal" data-kid="56">
+    <div class="reveal__stage" data-kid="57">
+      <div class="reveal__layer reveal__base" data-kid="58">
+        <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/3b436b1d1f3243afa4357578ab451564.png" alt aria-hidden="true" loading="lazy" data-kid="59" onerror="__crawlAsset&&__crawlAsset(this)">
+      </div>
+      <div class="reveal__layer reveal__color" data-kid="60">
+        <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/3b436b1d1f3243afa4357578ab451564.png" alt="Oxblood and gold perfume mid-pour" loading="lazy" data-kid="61" onerror="__crawlAsset&&__crawlAsset(this)">
+      </div>
+    </div>
+    <h2 class="reveal__word" data-kid="62">BLOOM</h2>
+    <span class="reveal__cap" data-kid="63">// move to reveal</span>
+  </section>
+
+  
+  <section class="maker" id="maker" data-kid="64">
+    <div class="maker__portrait" data-kid="65">
+      <img src="https://kombai-assets.b-cdn.net/generated_assets/a6a3f100-283a-4cf8-9be9-44c4db7bb4be/a33e7292f5bf4df39b141d1950ed39de.png" alt="Chiaroscuro portrait of perfumer Élise Varga" loading="lazy" data-kid="66" onerror="__crawlAsset&&__crawlAsset(this)">
+    </div>
+    <div class="maker__diag" aria-hidden="true" data-kid="67"></div>
+    <div class="maker__quote" data-kid="68">
+      <span class="maker__mark" aria-hidden="true" data-kid="69">&ldquo;</span>
+      <p class="maker__q" aria-label="I built Nocturne to smell like the hour you shouldn't be awake." data-kid="70"></p>
+    </div>
+    <div class="maker__attr" data-kid="71">Élise Varga · Nose · Maison Nocturne</div>
+  </section>
+
+  
+  <footer id="footer" data-kid="72">
+    <div class="foot__rail" data-kid="73">
+      <div class="foot__col" style="--i:0" data-kid="74">
+        <h4 data-kid="75">Maison</h4>
+        <a href="#" data-kid="76">The Story</a><a href="#" data-kid="77">Press</a><a href="#" data-kid="78">Stockists</a><a href="#" data-kid="79">Sustainability</a>
+      </div>
+      <div class="foot__col" style="--i:1" data-kid="80">
+        <h4 data-kid="81">The No. 1</h4>
+        <a href="#" data-kid="82">Notes</a><a href="#" data-kid="83">The Ritual</a><a href="#" data-kid="84">Refills</a><a href="#" data-kid="85">Travel Size</a>
+      </div>
+      <div class="foot__col" style="--i:2" data-kid="86">
+        <h4 data-kid="87">Contact</h4>
+        <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem" data-kid="88">Letters from after dark.</p>
+        <form class="foot__news" onsubmit="return false" data-kid="89">
+          <input type="email" placeholder="Your email" aria-label="Email for newsletter" data-kid="90">
+          <button type="submit" data-kid="91">Join</button>
+        </form>
+        <a href="#" style="margin-top:1rem" data-kid="92">Concierge →</a>
+      </div>
+    </div>
+    <div class="foot__hr" data-kid="93"></div>
+    <div class="foot__wm" data-kid="94">NOCTURNE</div>
+    <div class="foot__fine" data-kid="95">© MMXXVI Maison Nocturne · Made After Dark</div>
+  </footer>
+
+  <script data-kid="96">
+    (function () {
+
+      /* Hero title split across the seam */
+      var title = document.querySelector('.hero__title');
+      var word = 'NOCTURNE';
+      for (var i = 0; i < word.length; i++) {
+        var s = document.createElement('span');
+        s.className = 'ch ' + (i < 4 ? 'l' : 'r');
+        s.style.setProperty('--i', i);
+        s.textContent = word[i];
+        title.appendChild(s);
+      }
+
+      /* Maker quote per-word split */
+      var q = document.querySelector('.maker__q');
+      var qt = "I built Nocturne to smell like the hour you shouldn't be awake.".split(' ');
+      qt.forEach(function (w, i) {
+        var sp = document.createElement('span');
+        sp.className = 'w'; sp.style.setProperty('--i', i); sp.textContent = w;
+        q.appendChild(sp);
+        q.appendChild(document.createTextNode(' '));
+      });
+
+      /* Mobile nav burger toggle */
+      var navEl = document.querySelector('nav');
+      var burger = document.querySelector('.nav__burger');
+      if (burger && navEl) {
+        function setNav(open) {
+          navEl.classList.toggle('open', open);
+          burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          document.body.style.overflow = open ? 'hidden' : '';
+        }
+        burger.addEventListener('click', function () {
+          setNav(!navEl.classList.contains('open'));
+        });
+        navEl.querySelectorAll('.links a').forEach(function (a) {
+          a.addEventListener('click', function () { setNav(false); });
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') setNav(false);
+        });
+        /* Reset menu state when returning to desktop widths */
+        window.matchMedia('(max-width:768px)').addEventListener('change', function (m) {
+          if (!m.matches) setNav(false);
+        });
+      }
+
+      /* Loaded class triggers hero curtain */
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { document.body.classList.add('is-loaded'); });
+      });
+
+      /* IntersectionObserver for section entrances */
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); } });
+      }, { threshold: .25 });
+      ['.pyramid__head', '.reveal', '.maker', 'footer'].forEach(function (sel) {
+        var el = document.querySelector(sel); if (el) io.observe(el);
+      });
+
+      /* Spotlight reveal (mouse) */
+      var reveal = document.querySelector('.reveal');
+      var mx = window.innerWidth / 2, my = window.innerHeight / 2, rafM = false;
+      function applyMask() {
+        var r = reveal.getBoundingClientRect();
+        reveal.style.setProperty('--mx', (mx - r.left) + 'px');
+        reveal.style.setProperty('--my', (my - r.top) + 'px');
+        rafM = false;
+      }
+      const reduce = false;
+      reveal.addEventListener('mousemove', function (e) {
+        mx = e.clientX; my = e.clientY;
+        if (!rafM) { requestAnimationFrame(applyMask); rafM = true; }
+      });
+      /* Touch / no-hover fallback: pulse spotlight on sin/cos loop */
+      var hasHover = window.matchMedia('(hover:hover)').matches;
+      if (!hasHover && !reduce) {
+        var t = 0;
+        (function loop() {
+          t += 0.012;
+          var r = reveal.getBoundingClientRect();
+          var cx = r.width / 2 + Math.cos(t) * r.width * 0.28;
+          var cy = r.height / 2 + Math.sin(t * 1.3) * r.height * 0.22;
+          reveal.style.setProperty('--mx', cx + 'px');
+          reveal.style.setProperty('--my', cy + 'px');
+          requestAnimationFrame(loop);
+        })();
+      }
+
+      /* Single rAF scroll loop */
+      var sy = window.scrollY, ticking = false;
+      var heroL = document.querySelector('.hero__left');
+      var heroR = document.querySelector('.hero__right');
+      var seam = document.querySelector('.hero__seam');
+      var seamSpan = document.querySelector('.hero__seam span');
+      var hero = document.querySelector('.hero');
+      var pyramid = document.querySelector('.pyramid');
+      var pyGlow = document.querySelector('.pyramid__glow');
+      var panels = document.querySelectorAll('.panel');
+      var revealStage = document.querySelector('.reveal__stage');
+      var maker = document.querySelector('.maker');
+      var portrait = document.querySelector('.maker__portrait');
+      var mark = document.querySelector('.maker__mark');
+      var curPanel = -1;
+
+      function update() {
+        /* HERO pull-apart */
+        var hp = Math.min(1, Math.max(0, sy / (window.innerHeight)));
+        heroL.style.transform = 'translateX(' + (-hp * 12) + 'vw)';
+        heroR.style.transform = 'translateX(' + (hp * 12) + 'vw)';
+        var gap = hp * 60;
+        seam.style.width = (2 + gap) + 'px';
+        seamSpan.style.opacity = hp > 0.15 ? Math.min(1, (hp - 0.15) * 3) : 0;
+
+        /* PYRAMID panel swap */
+        if (pyramid) {
+          var pr = pyramid.getBoundingClientRect();
+          var total = pyramid.offsetHeight - window.innerHeight;
+          var p = Math.min(1, Math.max(0, -pr.top / total));
+          var seg = Math.min(2, Math.floor(p * 3));
+          var localP = (p * 3) - seg;
+          if (seg !== curPanel) {
+            panels.forEach(function (pn, i) { pn.classList.toggle('active', i === seg); });
+            curPanel = seg;
+          }
+          if (pyGlow) {
+            var glowScale = 0.7 + p * 0.8;
+            pyGlow.style.transform = 'translate(-50%,-50%) scale(' + glowScale + ')';
+            pyGlow.style.opacity = 0.4 + p * 0.5;
+          }
+          var actRule = panels[seg] && panels[seg].querySelector('.rule');
+          if (actRule) actRule.style.transform = 'scaleX(' + (0.15 + localP * 0.85) + ')';
+        }
+
+        /* REVEAL scale */
+        if (revealStage) {
+          var rr = document.querySelector('.reveal').getBoundingClientRect();
+          var rp = Math.min(1, Math.max(0, (window.innerHeight - rr.top) / (window.innerHeight + rr.height)));
+          revealStage.style.transform = 'scale(' + (1 + rp * 0.04) + ')';
+        }
+
+        /* MAKER parallax */
+        if (maker) {
+          var mr = maker.getBoundingClientRect();
+          var mp = (window.innerHeight - mr.top) / (window.innerHeight + mr.height);
+          mp = Math.min(1, Math.max(0, mp));
+          portrait.style.transform = 'translateY(' + (-mp * 60) + 'px)';
+          mark.style.transform = 'translateX(' + (0.2 - mp * 0.4) + 'em)';
+        }
+        ticking = false;
+      }
+      function onScroll() { sy = window.scrollY; if (!ticking) { requestAnimationFrame(update); ticking = true; } }
+      if (!reduce) {
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+        update();
+      } else {
+        panels.forEach(function (pn, i) { pn.classList.toggle('active', i === 0); });
+      }
+    })();
+  </script>
+</div>
+  
+  
+</body></html>
